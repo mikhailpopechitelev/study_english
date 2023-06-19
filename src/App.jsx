@@ -1,46 +1,76 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, React } from "react";
 import "./App.css";
 import { list } from "./assets/list";
+
 import {
   createAssistant,
   createSmartappDebugger,
 } from "@salutejs/client"
-
-const initializeAssistant = (getState) => {
-  let i
-  console.log("создался бот "+i)
-  i+=1;
-  if (process.env.NODE_ENV === "development") {
-    return createSmartappDebugger({
-      token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJqdGkiOiIxMDRiZDQzOS0wNmU4LTQ3YjItOGIzZC1iYzg2ZmMyNzczMTQiLCJzdWIiOiI5ODIxY2IxNGNiNGZlMzQyMzlhNmM1MDliNTgzNjIwY2E2ZDg5OGU1MDc0YTA4ZTMwMjdmMzk0OTg3YjNjZDkxNTM5YmU5MjcwMDQyNjI5OCIsImlzcyI6IktFWU1BU1RFUiIsImV4cCI6MTY4NjkyNjU2MiwiYXVkIjoiVlBTIiwiaWF0IjoxNjg2ODQwMTUyLCJ0eXBlIjoiQmVhcmVyIiwic2lkIjoiYWZjYTc1NmItMTIwOS00NDNiLThiODUtNzFjMWNkYTM1YTYzIn0.CROAYWGxGYZlGIR59eftaP-obRyhwdgarIhXVyxFMFpsoiU_E89koeomFgV-syldD8xbO5vIcMVZACewgN6jhQxq61NXKvXxpiPdGq2j84qn3xb-445SxYOAjxVfS7NxJwmShuVFfBq29sRErExArMSob1qwLciws2zP0M__Fbmys6nat1_jhljCGfcpmMFlbi0hryiZIN1cLVnx4UuxgUYZgwJtFj74VD4X_r5nQlu4lTt5IQ8pKLmaKL8XTOkaTNpCVXBUngwXvRFQZjzMeDwFBVbSvqwmNt04_3cIoM1wIOsTDPHvndDZ2uvSBB-Jph9RBPECcqgYrKOpEo99OcDW3ejccngSlJDUbYHlGZ7rHKLFIzlbjvi6RWLqDYD9gsf8sAjiYHnoyL7Mmmt7pzZNzi_G1N5MSo5S5eSXAR9kx49iseZgtXdGDvNRVArVQQ8UUerCNagTk1WVNBQmyn1mkOOkLpzm_YH8bGxeU49KQFbXGBHFl52lBIvbDjUJvWsJvDa0aCAcgZ24syQO2auyyZdSHlmJdiVml-fiTbKLZ_S9VFpAhNzTj5DVhgzbF2MgB-VKaIixE7QLM-k22sNcfwACqgQKIvNUsfNds5Ff0K6i53dQyUMStW9S-xFv_Ceg46dC8KHOoOhFzU-5TendQ9n7EjJNSq6LrIdbjiQ"/*process.env.REACT_APP_TOKEN ?? ""*/,
-      initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`,
-      getState,
-    });
-  }
-  return createAssistant({ getState });
-};
-
-function App() {
-
-  var ans = ""
-  let state = {
-    notes: [],
-  }
+import { initializeAssistantSDK } from "@sberdevices/assistant-client";
 
 
-  useEffect(() => {
-    let assistant = initializeAssistant(() => getStateForAssistant() );
-    assistant.on("data", (event) => {
-      console.log(event)
+/*
+export class App extends React.Component{
+  constructor(props) {
+    
+    super(props);
+    console.log('constructor');
+
+    
+    this.state = {
+      notes: [],
+    }
+
+  
+    this.assistant = initializeAssistant(() => this.getStateForAssistant() );
+    this.assistant.on("data", (event) => {
+      console.log(`assistant.on(data)`, event);
       const { action } = event
-      dispatchAssistantAction(action);
+      this.dispatchAssistantAction(action);
     });
-  },[])
+    this.assistant.on("start", (event) => {
+      console.log(`assistant.on(start)`, event);
+    });
 
-  function getStateForAssistant () {
-    var tmp = {
+    useEffect(() => {
+      newQuestion();
+    }, []);
+  
+    //тут перетасовка ответа при изменение вопроса
+    useEffect(() => {
+      if (currentQuestion) {
+        setShiffledAnswer(shuffle());
+      }
+    }, [currentQuestion]);
+  
+      //тут проверка ответа при добавлении нового слова
+      useEffect(() => {
+        //Если ответ пользователя и правильный ответ совпадают
+        if (userAnswer.join(" ") === currentQuestion?.ru) {
+          setUsedSentences([...usedSentences, currentQuestion]);
+          setAnswerCount({ ...answerCount, current: ++answerCount.current  });
+          setUserAnswer([]);
+          newQuestion();
+        } else if (userAnswer.length === currentQuestion?.ru.split(" ")?.length) {
+          //Если не осталось слов, нечего больше выбирать.
+          setAnswerCount({ ...answerCount, failed: ++answerCount.failed  });
+          setUserAnswer([]);
+          //tmpUserAnswer = []
+        }
+      }, [userAnswer]);
+
+
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount');
+  }
+
+  getStateForAssistant () {
+    console.log('getStateForAssistant: this.state:', this.state)
+    const state = {
       item_selector: {
-        items: state.notes.map(
+        items: this.state.notes.map(
           ({ id, title }, index) => ({
             number: index + 1,
             id,
@@ -49,16 +79,15 @@ function App() {
         ),
       },
     };
-    //console.log('getStateForAssistant: state:', state)
-    return tmp;
+    console.log('getStateForAssistant: state:', state)
+    return state;
   }
 
-  function dispatchAssistantAction(action){
+  dispatchAssistantAction (action){
     if (action) {
       switch (action.type) {
         case 'get_str':
-
-          add_plitka(action)
+          handleClick(action.note)
           break
 
         default:
@@ -67,32 +96,15 @@ function App() {
     }
   }
 
-  
-
-
-  const [currentQuestion, setCurrentQuestion] = useState(null);
-  const [shiffledAnswer, setShiffledAnswer] = useState(null);
-  const [answerCount, setAnswerCount] = useState({ current: 0, failed: 0 });
-  const [userAnswer, setUserAnswer] = useState([]);
-  const [usedSentences, setUsedSentences] = useState([]);
-  const [isCompleted, setIsCompleted] = useState(false);
-
-
-
-  //тут формируется новый вопрос
-
-
-  const newQuestion = () => {
+  newQuestion = () => {
     const newItemNumber = Math.floor(Math.random() * list.length);
     const newItem = list[newItemNumber];
     //если всего слов равно количеству правильных ответов
-    if (list.length === answerCount.current) {
+    if (list.length === this.answerCount.current) {
       //закончить игру
       setIsCompleted(true);
       return;
     }
-
-    
     //проверка было ли использовано предложение
     if (
       usedSentences.find(
@@ -103,7 +115,180 @@ function App() {
     ) 
     {
       return newQuestion();
-    } else {
+    } else 
+    {
+      setUsedSentences([...usedSentences, newItem]);
+      setCurrentQuestion(newItem);
+    }
+    
+  };
+
+
+  //тут перетасовываются 'части' ответа
+  shuffle() {
+    const arr = currentQuestion.ru.split(" ");
+    return arr ? arr.sort(() => Math.random() - 0.5) : [];
+  }
+
+
+  //тут клик на кнопку
+  
+  handleClick = (item) => {
+    setUserAnswer([...userAnswer, item]);
+  };
+
+
+  render() {
+    console.log('render');
+    return (
+      <div className="container">
+        {isCompleted ? (
+          <div className="end">congratulations!</div>
+        ) : (
+          <div className="wrapper">
+            <div className="header">Learn English</div>
+            <div className="question">Переведи: {currentQuestion?.en}</div>
+            <div className="user_answer">
+              <div className="user_answer_header">Ваш ответ:</div>
+              <div className="user_answer_current">
+                <span>{userAnswer?.join(" ")}</span>
+              </div>
+            </div>
+            <div className="btn">
+              <div className="btn_header">Выбери правильный порядок слов</div>
+              <div className="btn_list">
+                {shiffledAnswer?.map((item, index) => {
+                  if (!userAnswer.includes(item)) {
+                    //это кнопки с ответами
+                    return (
+                      <button key={index} onClick={() => handleClick(item)}>
+                        {item}
+                      </button>
+                    );
+                  }
+                })}
+              </div>
+            </div>
+            <div className="answer_count">
+              <span>
+                правильно: <b>{answerCount.current}</b>
+              </span>
+              <span>
+                неправильно: <b>{answerCount.failed}</b>
+              </span>
+            </div>
+            <div className="btn_skip">
+              <button
+                onClick={() => {
+                  //это пропуск
+                  setUsedSentences(usedSentences.pop());
+                  newQuestion();
+                }}
+              >
+                Пропустить
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+}
+*/
+
+
+function App(props) {
+
+  //let assistant = initializeAssistant(() => getStateForAssistant() );
+
+
+  /*
+  function dispatchAssistantAction(action){
+    if (action) {
+      switch (action.type) {
+        case 'get_str':
+          handleClick(action.note)
+          break
+
+        default:
+          throw new Error();  
+      }
+    }
+  }*/
+  
+
+  const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [shiffledAnswer, setShiffledAnswer] = useState(null);
+  const [answerCount, setAnswerCount] = useState({ current: 0, failed: 0 });
+  const [userAnswer, setUserAnswer] = useState([]);
+  const [usedSentences, setUsedSentences] = useState([]);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [contButton, setContButton] = useState(0);
+  
+
+  useEffect(() => {
+    props.assistant.on("data",(event) => {
+      const { action } = event
+      if((action)&&((action.note!=userAnswer[userAnswer.length-1])||(userAnswer.length==0))){
+        dispatchAssistantAction(action)
+      }
+    }); 
+  },[userAnswer]);
+
+  
+  function dispatchAssistantAction(action){
+    if (action) {
+      switch (action.type) {
+        case 'get_str':
+          handleClick(action.note)
+          break
+  
+        default:
+          throw new Error();  
+      }
+    }
+  }
+
+  /*
+  props.assistant.on("data", (event) => {
+    const { action } = event
+    if(action){
+      dispatchAssistantAction(action);
+    };
+  });*/
+  /*
+  useEffect(() => {
+    props.assistant.on("data", (event) => {
+      const { action } = event
+      if(action){
+        dispatchAssistantAction(action);
+      };
+    });
+  },[])
+*/
+///тут формируется новый вопрос
+
+  const newQuestion = () => {
+    const newItemNumber = Math.floor(Math.random() * list.length);
+    const newItem = list[newItemNumber];
+    //если всего слов равно количеству правильных ответов
+    if (list.length === answerCount.current) {
+      //закончить игру
+      setIsCompleted(true);
+      return;
+    }
+    //проверка было ли использовано предложение
+    if (
+      usedSentences.find(
+        (item) =>
+          item.ru.toLowerCase().replaceAll(" ") ===
+          newItem.ru.toLowerCase().replaceAll(" ")
+      )
+    ) 
+    {
+      return newQuestion();
+    } else 
+    {
       setUsedSentences([...usedSentences, newItem]);
       setCurrentQuestion(newItem);
     }
@@ -118,8 +303,10 @@ function App() {
 
 
   //тут клик на кнопку
+  
   const handleClick = (item) => {
     setUserAnswer([...userAnswer, item]);
+    console.log(userAnswer)
   };
 
 
@@ -131,46 +318,40 @@ function App() {
 
   //тут перетасовка ответа при изменение вопроса
   useEffect(() => {
+    
     if (currentQuestion) {
       setShiffledAnswer(shuffle());
+      //setContButton(shiffledAnswer.length)
     }
   }, [currentQuestion]);
 
-  console.log(shiffledAnswer)
-  if(shiffledAnswer != null){
-    var buttonList = shiffledAnswer
-  }
+    //тут проверка ответа при добавлении нового слова
 
-  const add_plitka = (action) => {
-    console.log(buttonList)
-    if(buttonList.map(e => e.toLowerCase()).includes(action.note)){
-      setUserAnswer([...userAnswer, action.note]);
-    }
-  }
+    useEffect(() => {
+      //Если ответ пользователя и правильный ответ совпадают
+      console.log(userAnswer + "  Гей")
+      if (userAnswer.join(" ") === currentQuestion?.ru) {
 
-  //тут проверка ответа при добавлении нового слова
-  useEffect(() => {
-    //Если ответ пользователя и правильный ответ совпадают
-    if (userAnswer.join(" ") === currentQuestion?.ru) {
-      setUsedSentences([...usedSentences, currentQuestion]);
-      setAnswerCount({ ...answerCount, current: ++answerCount.current });
-      setUserAnswer([]);
-      newQuestion();
-    } else if (userAnswer.length === currentQuestion?.ru.split(" ")?.length) {
-      //Если не осталось слов, нечего больше выбирать.
-      setAnswerCount({ ...answerCount, failed: ++answerCount.failed });
-      setUserAnswer([]);
-    }
-  }, [userAnswer]);
+        setUsedSentences([...usedSentences, currentQuestion]);
+        setAnswerCount({ ...answerCount, current: ++answerCount.current  });
+        setUserAnswer([]);
+        newQuestion();
+      } else if (userAnswer.length === currentQuestion?.ru.split(" ")?.length) {
+        //Если не осталось слов, нечего больше выбирать.
+        setAnswerCount({ ...answerCount, failed: ++answerCount.failed  });
+        setUserAnswer([]);
+        //tmpUserAnswer = []
+      }
+    }, [userAnswer]);
 
-  console.log(shiffledAnswer)
+    
   return (
     <div className="container">
       {isCompleted ? (
         <div className="end">congratulations!</div>
       ) : (
         <div className="wrapper">
-          <div className="header" id = "hui">Learn English</div>
+          <div className="header">Learn English</div>
           <div className="question">Переведи: {currentQuestion?.en}</div>
           <div className="user_answer">
             <div className="user_answer_header">Ваш ответ:</div>
@@ -217,6 +398,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
