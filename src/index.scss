@@ -1,0 +1,156 @@
+#root {
+  --plasma-colors-white: #ffffff;
+  --plasma-colors-white-primary: #ffffff;
+  --plasma-colors-white-secondary: rgba(255, 255, 255, 0.56);
+  --plasma-colors-white-tertiary: rgba(255, 255, 255, 0.28);
+  --plasma-colors-black: #080808;
+  --plasma-colors-black-primary: #080808;
+  --plasma-colors-black-secondary: rgba(8, 8, 8, 0.56);
+  --plasma-colors-black-tertiary: rgba(8, 8, 8, 0.28);
+  --plasma-colors-dark01: #171717;
+  --plasma-colors-dark02: #232323;
+  --plasma-colors-dark03: #363636;
+  --plasma-colors-transparent: rgba(0, 0, 0, 0);
+  --plasma-colors-button-clear: rgba(0, 0, 0, 0);
+  --plasma-colors-button-black: #080808;
+  --plasma-colors-button-black-secondary: rgba(8, 8, 8, 0.12);
+  --plasma-colors-button-black-transparent: rgba(8, 8, 8, 0.56);
+  --plasma-colors-button-white: #ffffff;
+  --plasma-colors-button-white-secondary: rgba(255, 255, 255, 0.12);
+  --plasma-colors-text: rgba(255, 255, 255, 0.96);
+  --plasma-colors-primary: rgba(255, 255, 255, 0.96);
+  --plasma-colors-secondary: rgba(255, 255, 255, 0.56);
+  --plasma-colors-tertiary: rgba(255, 255, 255, 0.28);
+  --plasma-colors-paragraph: rgba(255, 255, 255, 0.96);
+  --plasma-colors-inverse: #080808;
+  --plasma-colors-background: #080808;
+  --plasma-colors-background-primary: #171717;
+  --plasma-colors-background-secondary: #232323;
+  --plasma-colors-background-tertiary: #363636;
+  --plasma-colors-success: #24b23e;
+  --plasma-colors-warning: #fa6d20;
+  --plasma-colors-critical: #ff4d5f;
+  --plasma-colors-surface-liquid01: rgba(255, 255, 255, 0.06);
+  --plasma-colors-surface-liquid02: rgba(255, 255, 255, 0.12);
+  --plasma-colors-surface-liquid03: rgba(255, 255, 255, 0.2);
+  --plasma-colors-surface-solid01: #171717;
+  --plasma-colors-surface-solid02: #232323;
+  --plasma-colors-surface-solid03: #363636;
+  --plasma-colors-surface-card: rgba(255, 255, 255, 0.12);
+  --plasma-colors-button-primary: #ffffff;
+  --plasma-colors-button-secondary: rgba(255, 255, 255, 0.12);
+  --plasma-colors-button-success: #21a038;
+  --plasma-colors-button-warning: #e35502;
+  --plasma-colors-button-critical: #ff2e43;
+  --plasma-colors-button-checked: #ffffff;
+  --plasma-colors-skeleton-gradient: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.09) 0%,
+    rgba(255, 255, 255, 0.08) 6.25%,
+    rgba(255, 255, 255, 0.05) 12.5%,
+    rgba(255, 255, 255, 0.01) 25%,
+    rgba(255, 255, 255, 0.05) 37.5%,
+    rgba(255, 255, 255, 0.08) 43.75%,
+    rgba(255, 255, 255, 0.09) 50%,
+    rgba(255, 255, 255, 0.08) 56.25%,
+    rgba(255, 255, 255, 0.05) 62.5%,
+    rgba(255, 255, 255, 0.01) 75%,
+    rgba(255, 255, 255, 0.05) 87.5%,
+    rgba(255, 255, 255, 0.08) 93.75%,
+    rgba(255, 255, 255, 0.09) 100%
+  );
+  --plasma-colors-skeleton-gradient-lighter: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.36) 0%,
+    rgba(255, 255, 255, 0.32) 6.25%,
+    rgba(255, 255, 255, 0.2) 12.5%,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.2) 37.5%,
+    rgba(255, 255, 255, 0.32) 43.75%,
+    rgba(255, 255, 255, 0.36) 50%,
+    rgba(255, 255, 255, 0.08) 56.25%,
+    rgba(255, 255, 255, 0.2) 62.5%,
+    rgba(255, 255, 255, 0.04) 75%,
+    rgba(255, 255, 255, 0.2) 87.5%,
+    rgba(255, 255, 255, 0.32) 93.75%,
+    rgba(255, 255, 255, 0.36) 100%
+  );
+  --plasma-colors-speech-bubble-sent: rgba(0, 0, 0, 0.28);
+  --plasma-colors-speech-bubble-received: rgba(255, 255, 255, 0.12);
+  --plasma-colors-overlay: rgba(0, 0, 0, 0.8);
+  --plasma-colors-overlay-soft: rgba(8, 8, 8, 0.56);
+  --plasma-colors-overlay-hard: rgba(8, 8, 8, 0.9);
+  --plasma-colors-overlay-blur: rgba(23, 23, 23, 0.28);
+  --plasma-colors-dark-overlay-soft: rgba(8, 8, 8, 0.56);
+  --plasma-colors-dark-overlay-hard: rgba(8, 8, 8, 0.9);
+  --plasma-colors-dark-overlay-blur: rgba(23, 23, 23, 0.28);
+  --plasma-colors-light-overlay-soft: rgba(8, 8, 8, 0.56);
+  --plasma-colors-light-overlay-hard: rgba(8, 8, 8, 0.9);
+  --plasma-colors-light-overlay-blur: rgba(23, 23, 23, 0.28);
+  --plasma-colors-inverse-overlay-soft: rgba(8, 8, 8, 0.56);
+  --plasma-colors-inverse-overlay-hard: rgba(8, 8, 8, 0.9);
+  --plasma-colors-inverse-overlay-blur: rgba(23, 23, 23, 0.28);
+  --plasma-colors-accent: #24b23e;
+  --plasma-colors-button-accent: #21a038;
+  --plasma-colors-button-focused: rgba(255, 255, 255, 0.96);
+  --plasma-colors-gradient: linear-gradient(
+      336.84deg,
+      rgba(20, 116, 70, 0.6) 0%,
+      rgba(8, 8, 8, 0) 64.88%
+    ),
+    radial-gradient(
+      100% 100% at 75.89% 100%,
+      rgba(0, 133, 255, 0.24) 0%,
+      rgba(0, 71, 255, 0.03) 100%
+    ),
+    linear-gradient(180deg, rgba(8, 8, 8, 0) 50%, rgba(7, 71, 33, 0.3) 100%),
+    linear-gradient(270deg, #061621 0%, rgba(8, 8, 8, 0) 100%);
+  --plasma-colors-gradient-device: linear-gradient(
+      26.05deg,
+      rgba(15, 153, 24, 0.28) 0%,
+      rgba(8, 8, 8, 0) 72.24%
+    ),
+    radial-gradient(100% 100% at 0% 100%, rgba(0, 170, 255, 0.24) 0%, rgba(8, 8, 8, 0) 99.69%),
+    radial-gradient(
+      74.68% 149.35% at 50% 149.35%,
+      rgba(0, 102, 255, 0.6) 0%,
+      rgba(8, 8, 8, 0) 99.69%
+    );
+  --plasma-colors-voice-phrase-gradient: linear-gradient(
+    45deg,
+    hsla(130, 75.63025210084032%, 46.666666666666664%, 1) 0%,
+    hsla(189.78947368421052, 78.51239669421487%, 52.54901960784314%, 1) 100%
+  );
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // height: 100vh;
+  // max-height: 100vh;
+  min-height: 100vh;
+  background: var(--plasma-colors-background-primary);
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 700;
+}
+.end {
+  width: 100vw;
+  height: 100vh;
+  background: url('https://oir.mobi/uploads/posts/2021-03/1616982113_44-p-fon-salyut-46.jpg')
+    no-repeat;
+  background-size: 100%;
+  font-size: x-large;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

@@ -4,10 +4,6 @@ export const list = [
         ru:"Я изучаю английский язык",
     },
     {
-        en:"I wake up at 8:00 in the morning",
-        ru:"Я просыпаюсь в 8 утра",
-    },
-    {
         en:"I have an apartment in Moscow",
         ru:"У меня есть квартира в Москве",
     },
@@ -56,10 +52,6 @@ export const list = [
         ru:"В прошлом году они неделю жили на Аляске",
     },
     {
-        en:"My younger sister was born in 2005",
-        ru:"Моя младшая сестра родилась в 2005 году",
-    },
-    {
         en:"The concert ended very late",
         ru:"Концерт закончился очень поздно",
     },
@@ -72,24 +64,12 @@ export const list = [
         ru:"Я заеду к тебе завтра утром",
     },
     {
-        en:"Alex will be home from work soon",
-        ru:"Алекс скоро вернется домой с работы",
-    },
-    {
         en:"He’ll call a cab in half an hour",
         ru:"Он вызовет такси через полчаса",
     },
     {
         en:"I’m going to work tomorrow in my own car",
         ru:"Завтра я поеду на работу на собственном автомобиле",
-    },
-    {
-        en:"Emily’s not going to university tomorrow",
-        ru:"Эмили не пойдет завтра в университет",
-    },
-    {
-        en:"I’ll be 18 next week",
-        ru:"На следующей неделе мне исполнится 18 лет",
     },
     {
         en:"This winter will be cold",
@@ -106,10 +86,6 @@ export const list = [
     {
         en:"She won’t tell anyone this secret",
         ru:"Она никому не расскажет эту тайну",
-    },
-    {
-        en:"Dinah’s driving to work",
-        ru:"Дина в машине едет на работу",
     },
     {
         en:"I can’t talk on the phone",
@@ -130,10 +106,6 @@ export const list = [
     {
         en:"I was writing a paper when you called",
         ru:"Я писал курсовую, когда ты позвонил",
-    },
-    {
-        en:"We’re going camping next week on Saturday",
-        ru:"На следующей неделе в субботу мы идем в поход",
     },
     {
         en:"This time tomorrow, I’ll still be asleep",

@@ -1,0 +1,30 @@
+.root {
+  // height: 100vh;
+}
+
+.wrapper {
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 260px);
+  justify-content: space-between;
+  // padding-bottom: 200px;
+}
+.selectedWords {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cardWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.answInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.underline {
+  font-style: italic;
+}

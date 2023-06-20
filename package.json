@@ -3,13 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@salutejs/client": "^1.20.0",
+    "@salutejs/plasma-icons": "^1.150.0",
+    "@salutejs/plasma-tokens": "^1.55.0",
+    "@salutejs/plasma-tokens-web": "^1.36.0",
+    "@salutejs/plasma-ui": "^1.197.0",
     "@sberdevices/assistant-client": "^5.0.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "styled-components": "5.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
