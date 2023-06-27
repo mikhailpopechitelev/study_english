@@ -66,10 +66,10 @@ export function App(props) {
       if (userAnswer.join(' ').toLowerCase() === currentQuestion?.ru.toLowerCase()) {
         console.log('first');
         dispatchAnsw({ type: 'CORRECT' });
-        props.assistant?.sendData({"action": {"action_id":"DONE_NOTE", "parameters": true}})
+        props.assistant?.sendData({"action": {"action_id":"DONE_NOTE", "parameters": {note: true}}})
       } else {
         dispatchAnsw({ type: 'FAILED' });
-        props.assistant?.sendData({"action": {"action_id":"DONE_NOTE", "parameters": false}})
+        props.assistant?.sendData({"action": {"action_id":"DONE_NOTE", "parameters": {note: false}}})
       }
       newQuestion();
     }

@@ -20,24 +20,12 @@ export const list = [
     ru: 'Мой пес ест только специальный корм',
   },
   {
-    en: 'The neighbor’s cat even walks on the street in winter',
-    ru: 'Соседская кошка даже зимой гуляет сама на улице',
-  },
-  {
     en: 'I rarely watch TV',
     ru: 'Я редко смотрю телевизор',
   },
   {
-    en: 'I go to this park sometimes',
-    ru: 'Я иногда бываю в этом парке',
-  },
-  {
     en: 'They like to walk in the evening',
     ru: 'Они любят гулять по вечерам',
-  },
-  {
-    en: 'Tomorrow, my sister and I are going to a concert with our favorite band',
-    ru: 'Завтра с сестрой мы идем на концерт любимой группы',
   },
   {
     en: 'I took a cab yesterday',
@@ -46,18 +34,6 @@ export const list = [
   {
     en: 'I lived in another town for two years',
     ru: 'Я два года жил в другом городе',
-  },
-  {
-    en: 'I flew to Thailand last summer',
-    ru: 'Прошлым летом я летал в Таиланд',
-  },
-  {
-    en: 'They lived in Alaska for a week last year',
-    ru: 'В прошлом году они неделю жили на Аляске',
-  },
-  {
-    en: 'My younger sister was born in 2005',
-    ru: 'Моя младшая сестра родилась в 2005 году',
   },
   {
     en: 'The concert ended very late',
@@ -72,20 +48,16 @@ export const list = [
     ru: 'Я заеду к тебе завтра утром',
   },
   {
-    en: 'Alex will be home from work soon',
-    ru: 'Алекс скоро вернется домой с работы',
+    en: 'Misha will be home from work soon',
+    ru: 'Миша скоро вернется домой с работы',
   },
   {
     en: 'He’ll call a cab in half an hour',
     ru: 'Он вызовет такси через полчаса',
   },
   {
-    en: 'I’m going to work tomorrow in my own car',
-    ru: 'Завтра я поеду на работу на собственном автомобиле',
-  },
-  {
-    en: 'Emily’s not going to university tomorrow',
-    ru: 'Эмили не пойдет завтра в университет',
+    en: 'Natasha’s not going to university tomorrow',
+    ru: 'Наташа не пойдет завтра в университет',
   },
   {
     en: 'I’ll be 18 next week',
@@ -108,10 +80,6 @@ export const list = [
     ru: 'Она никому не расскажет эту тайну',
   },
   {
-    en: 'Dinah’s driving to work',
-    ru: 'Дина в машине едет на работу',
-  },
-  {
     en: 'I can’t talk on the phone',
     ru: 'Я не могу разговаривать по телефону',
   },
@@ -120,23 +88,31 @@ export const list = [
     ru: 'Ребенок спит',
   },
   {
-    en: 'My sister complained constantly',
-    ru: 'Моя сестра постоянно жаловалась',
-  },
-  {
-    en: 'I was working last night',
-    ru: 'Вчера вечером я работал',
-  },
-  {
     en: 'I was writing a paper when you called',
     ru: 'Я писал курсовую, когда ты позвонил',
   },
   {
-    en: 'We’re going camping next week on Saturday',
-    ru: 'На следующей неделе в субботу мы идем в поход',
-  },
+    en: 'They were dancing merrily',
+    ru: 'Они весело танцевали',
+  }, 	
   {
-    en: 'This time tomorrow, I’ll still be asleep',
-    ru: 'Завтра в это время я буду еще спать',
-  },
+    en: 'I already made dinner',
+    ru: 'Я уже приготовила ужин',
+  }, 	
+  {
+    en: 'I discussed it with my father',
+    ru: 'Я обсуждал этот вопрос с отцом',
+  }, 	
+  {
+    en: 'Im very tired',
+    ru: 'Я очень утомился',
+  }, 	
+  {
+    en: 'He’s been reading this book for a month',
+    ru: 'Он читает эту книгу уже месяц',
+  }, 	
+  {
+    en: 'At the time of the call, I was reading a book',
+    ru: 'Во время звонка я читала книгу',
+  }	
 ];
